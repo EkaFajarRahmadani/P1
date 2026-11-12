@@ -25,10 +25,15 @@ class _NoteFormScreenState extends State<NoteFormScreen> {
     super.dispose();
   }
 
-  void _saveNote() {
+  String? _saveError;
+
+  Future<void> _saveNote() async {
     if (!(_formKey.currentState?.validate() ?? false)) {
       return;
     }
+    setState(() {
+      _saveError = null;
+    });
 
     final createdAt = DateTime.now();
     final note = Note(
@@ -38,8 +43,28 @@ class _NoteFormScreenState extends State<NoteFormScreen> {
       createdAt: createdAt,
     );
 
-    AppProvider.of(context).addNote(note);
+    try {
+      await AppProvider.of(context).addNote(note);
+    } on StateError {
+      _showSaveError();
+      return;
+    } on Exception {
+      _showSaveError();
+      return;
+    }
+    if (!mounted) {
+      return;
+    }
     Navigator.of(context).pop(true);
+  }
+
+  void _showSaveError() {
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      _saveError = 'Catatan gagal disimpan. Silakan coba lagi.';
+    });
   }
 
   @override
@@ -81,6 +106,13 @@ class _NoteFormScreenState extends State<NoteFormScreen> {
                 maxLength: 1000,
                 validator: Validators.validateContent,
               ),
+              if (_saveError != null) ...[
+                const SizedBox(height: 8),
+                Text(
+                  _saveError!,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                ),
+              ],
               const SizedBox(height: 20),
               FilledButton.icon(
                 onPressed: _saveNote,

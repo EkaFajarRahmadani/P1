@@ -10,11 +10,13 @@ Proyek Flutter untuk responsi praktikum Pemrograman Mobile.
 Periksa instalasi dengan `flutter doctor`, lalu jalankan:
 
 ```shell
+Copy-Item .env.example .env
 flutter pub get
 flutter run
 ```
 
-Jalankan pengujian dengan `flutter test`.
+Jangan isi `.env` dengan kredensial sungguhan dan jangan commit file tersebut.
+Gunakan `.env.example` sebagai template konfigurasi.
 
 ## Struktur sumber
 
@@ -44,4 +46,6 @@ lib/
     └── empty_state.dart
 ```
 
-File fitur disiapkan sebagai kerangka dan akan diimplementasikan bertahap.
+Metadata catatan disimpan sebagai JSON di SharedPreferences, sedangkan isi
+catatan disimpan melalui secure storage. Data pengguna publik dimuat dari API
+yang URL-nya ditentukan oleh `.env`.
