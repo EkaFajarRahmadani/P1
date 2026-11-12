@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Profil Mahasiswa',
+      debugShowCheckedModeBanner: false,
       // Soal 5: centralize the visual theme for consistent UI.
       theme: ThemeData(
         useMaterial3: true,
