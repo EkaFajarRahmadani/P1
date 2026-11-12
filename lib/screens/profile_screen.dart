@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/student.dart';
+import '../providers/app_provider.dart';
 import '../widgets/profile_card.dart';
 
 /// Displays the student profile and allows its details to be edited.
@@ -13,30 +14,23 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  Student _student = const Student(
-    name: 'Nama Mahasiswa',
-    nim: 'NIM belum diisi',
-    programStudi: 'Program Studi',
-    email: 'email@example.com',
-  );
-
   Future<void> _editProfile() async {
+    final appProvider = AppProvider.of(context);
     final updatedStudent = await showDialog<Student>(
       context: context,
-      builder: (context) => _EditProfileDialog(student: _student),
+      builder: (context) => _EditProfileDialog(student: appProvider.student),
     );
 
     if (!mounted || updatedStudent == null) {
       return;
     }
 
-    setState(() {
-      _student = updatedStudent;
-    });
+    appProvider.updateStudent(updatedStudent);
   }
 
   @override
   Widget build(BuildContext context) {
+    final student = AppProvider.of(context).student;
     return Scaffold(
       appBar: AppBar(title: const Text('Profil Mahasiswa')),
       body: SafeArea(
@@ -58,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 24),
-                  ProfileCard(student: _student),
+                  ProfileCard(student: student),
                   const SizedBox(height: 20),
                   FilledButton.icon(
                     key: const Key('edit-profile-button'),

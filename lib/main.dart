@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'providers/app_provider.dart';
 import 'screens/profile_screen.dart';
 
 /// Starts the student profile application.
 void main() {
-  runApp(const MyApp());
+  runApp(const AppProviderWrapper(child: MyApp()));
 }
 
 /// Configures the application theme and initial screen.
