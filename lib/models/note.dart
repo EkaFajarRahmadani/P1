@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-/// Stores the data required to display and manage a study note.
+/// Soal 3: stores the data required to display and manage a study note.
 @immutable
 class Note {
   /// Creates a study note.

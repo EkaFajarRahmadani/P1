@@ -1,6 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-/// Stores note bodies using the platform's encrypted key-value storage.
+/// Soal 4: stores note bodies using the platform's encrypted key-value storage.
 class SecureStorageService {
   /// Creates a secure storage service.
   SecureStorageService({FlutterSecureStorage? storage})

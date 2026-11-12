@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/note.dart';
 import '../services/secure_storage_service.dart';
 
-/// Persists note metadata separately from encrypted note content.
+/// Soal 4: persists note metadata separately from encrypted note content.
 class NoteRepository {
   /// Creates a repository using encrypted platform storage for note bodies.
   NoteRepository({SecureStorageService? secureStorage})

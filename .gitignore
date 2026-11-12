@@ -1,3 +1,4 @@
+# Soal 1: ignore generated files and local build output.
 # Miscellaneous
 *.class
 *.log
@@ -24,6 +25,7 @@ migrate_working_dir/
 #.vscode/
 
 # Flutter/Dart/Pub related
+# Soal 4: keep local environment values out of version control.
 .env
 **/doc/api/
 **/ios/Flutter/.last_build_id

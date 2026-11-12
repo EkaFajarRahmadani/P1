@@ -1,4 +1,4 @@
-/// Validates and sanitizes user-provided profile and note form values.
+/// Soal 3: validates and sanitizes user-provided profile and note form values.
 abstract final class Validators {
   Validators._();
 

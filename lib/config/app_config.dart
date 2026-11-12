@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-/// Loads and validates app configuration from the local `.env` asset.
+/// Soal 4: loads and validates app configuration from the local `.env` asset.
 abstract final class AppConfig {
   AppConfig._();
 

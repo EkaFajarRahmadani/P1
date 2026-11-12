@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/note.dart';
 
-/// Displays a saved study note and an action to delete it.
+/// Soal 5: displays a saved study note and an action to delete it.
 class NoteCard extends StatelessWidget {
   /// Creates a card for [note].
   const NoteCard({

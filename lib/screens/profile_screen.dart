@@ -4,7 +4,7 @@ import '../models/student.dart';
 import '../providers/app_provider.dart';
 import '../widgets/profile_card.dart';
 
-/// Displays the student profile and allows its details to be edited.
+/// Soal 2: displays the student profile and allows its details to be edited.
 class ProfileScreen extends StatefulWidget {
   /// Creates the profile screen.
   const ProfileScreen({super.key});
@@ -25,6 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       return;
     }
 
+    // Soal 3: keep edited profile data in shared application state.
     appProvider.updateStudent(updatedStudent);
   }
 

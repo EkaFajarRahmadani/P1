@@ -4,7 +4,7 @@ import '../models/note.dart';
 import '../providers/app_provider.dart';
 import '../utils/validators.dart';
 
-/// Provides a validated form for creating a study note.
+/// Soal 3: provides a validated form for creating a study note.
 class NoteFormScreen extends StatefulWidget {
   /// Creates the study note form.
   const NoteFormScreen({super.key});
@@ -43,6 +43,7 @@ class _NoteFormScreenState extends State<NoteFormScreen> {
       createdAt: createdAt,
     );
 
+    // Soal 4: persist validated input through the shared provider.
     try {
       await AppProvider.of(context).addNote(note);
     } on StateError {
@@ -55,6 +56,7 @@ class _NoteFormScreenState extends State<NoteFormScreen> {
     if (!mounted) {
       return;
     }
+    // Soal 5: return success to HomeScreen after saving.
     Navigator.of(context).pop(true);
   }
 

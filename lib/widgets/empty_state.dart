@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Shows a helpful message when the user's note list is empty.
+/// Soal 5: shows a helpful message when the user's note list is empty.
 class EmptyState extends StatelessWidget {
   /// Creates the empty notes state.
   const EmptyState({super.key});

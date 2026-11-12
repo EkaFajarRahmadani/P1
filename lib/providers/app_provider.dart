@@ -7,7 +7,7 @@ import '../models/note.dart';
 import '../models/student.dart';
 import '../repositories/note_repository.dart';
 
-/// Exposes application profile and note state to descendant widgets.
+/// Soal 3: exposes application profile and note state to descendant widgets.
 class AppProvider extends InheritedWidget {
   /// Creates a provider for the current application state.
   const AppProvider({
@@ -106,6 +106,7 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
     });
   }
 
+  // Soal 4: load persisted notes through the repository.
   Future<void> _loadStoredNotes() async {
     try {
       final notes = await _noteRepository.getNotes();
@@ -138,6 +139,7 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
     }
   }
 
+  // Soal 5: retry note loading from the HomeScreen error state.
   Future<void> _reloadNotes() async {
     if (_isLoadingNotes) {
       return;
@@ -150,6 +152,7 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
     await _notesLoadFuture;
   }
 
+  // Soal 4: persist note changes before updating shared UI state.
   Future<void> _addNote(Note note) async {
     await _notesLoadFuture;
     if (_notesError != null) {
@@ -165,6 +168,7 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
     });
   }
 
+  // Soal 4: remove persisted note data before updating shared UI state.
   Future<void> _deleteNote(String noteId) async {
     await _notesLoadFuture;
     if (_notesError != null) {

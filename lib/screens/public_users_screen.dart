@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../services/public_api_service.dart';
 
-/// Displays users fetched from the configured public API.
+/// Soal 4: displays users fetched from the configured public API.
 class PublicUsersScreen extends StatefulWidget {
   /// Creates the public data screen.
   const PublicUsersScreen({super.key});

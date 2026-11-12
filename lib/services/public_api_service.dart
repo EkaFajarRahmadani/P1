@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../config/app_config.dart';
 
-/// Represents non-sensitive user data returned by the public API.
+/// Soal 4: represents non-sensitive user data returned by the public API.
 class PublicUser {
   /// Creates a public user summary.
   const PublicUser({required this.id, required this.name, required this.email});
@@ -21,7 +21,7 @@ class PublicUser {
   final String email;
 }
 
-/// Performs HTTP requests to the configured public API.
+/// Soal 4: performs HTTP requests to the configured public API.
 class PublicApiService {
   /// Creates a public API service.
   const PublicApiService();

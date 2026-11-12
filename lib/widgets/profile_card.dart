@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/student.dart';
 
-/// Displays a student's initials and profile details.
+/// Soal 2: displays a student's initials and profile details.
 class ProfileCard extends StatelessWidget {
   /// Creates a profile card for [student].
   const ProfileCard({super.key, required this.student});

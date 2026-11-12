@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-/// Stores the display data for a student profile.
+/// Soal 2: stores the display data for a student profile.
 @immutable
 class Student {
   /// Creates a student profile with the required details.

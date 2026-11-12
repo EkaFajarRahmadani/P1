@@ -8,7 +8,7 @@ import 'note_form_screen.dart';
 import 'profile_screen.dart';
 import 'public_users_screen.dart';
 
-/// Displays the student summary and saved study notes.
+/// Soal 5: displays the student summary and saved study notes.
 class HomeScreen extends StatefulWidget {
   /// Creates the notes home screen.
   const HomeScreen({super.key});
@@ -162,6 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Catatan Kuliah'),
         actions: [
+          // Soal 4: keep API data available on its dedicated screen.
           IconButton(
             tooltip: 'Data Pengguna API',
             onPressed: _openPublicUsers,
