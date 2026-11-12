@@ -16,6 +16,7 @@ class AppProvider extends InheritedWidget {
     required this.notes,
     required this.isLoadingNotes,
     required this.notesError,
+    required this.reloadNotes,
     required this.updateStudent,
     required this.addNote,
     required this.deleteNote,
@@ -33,6 +34,9 @@ class AppProvider extends InheritedWidget {
 
   /// A safe message when saved notes could not be loaded.
   final String? notesError;
+
+  /// Reloads the saved notes after a loading error.
+  final Future<void> Function() reloadNotes;
 
   /// Replaces the current student profile.
   final ValueChanged<Student> updateStudent;
@@ -84,7 +88,7 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
   List<Note> _notes = const [];
   bool _isLoadingNotes = true;
   String? _notesError;
-  late final Future<void> _notesLoadFuture;
+  late Future<void> _notesLoadFuture;
 
   @override
   void initState() {
@@ -134,6 +138,18 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
     }
   }
 
+  Future<void> _reloadNotes() async {
+    if (_isLoadingNotes) {
+      return;
+    }
+    setState(() {
+      _isLoadingNotes = true;
+      _notesError = null;
+    });
+    _notesLoadFuture = _loadStoredNotes();
+    await _notesLoadFuture;
+  }
+
   Future<void> _addNote(Note note) async {
     await _notesLoadFuture;
     if (_notesError != null) {
@@ -177,6 +193,7 @@ class _AppProviderWrapperState extends State<AppProviderWrapper> {
       notes: _notes,
       isLoadingNotes: _isLoadingNotes,
       notesError: _notesError,
+      reloadNotes: _reloadNotes,
       updateStudent: _updateStudent,
       addNote: _addNote,
       deleteNote: _deleteNote,
